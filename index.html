@@ -10,9 +10,40 @@
 
 </head>
 
+
 <body>
 
-<div class="container">
+<div class="app">
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            Hazel OS
+        </div>
+
+        <nav>
+
+            <div class="nav-item active" onclick="location.href='index.html'">
+                🏠 Home
+            </div>
+
+            <div class="nav-item" onclick="location.href='pages/career.html'">
+                💼 Career
+            </div>
+
+            <div class="nav-item" onclick="alert('일상 공간은 Build 006에서 오픈 예정! 🌿')">
+                🌿 일상
+            </div>
+
+            <div class="nav-item" onclick="alert('Settings는 Build 010 예정! ⚙️')">
+                ⚙️ Settings
+            </div>
+
+        </nav>
+
+    </aside>
+
+    <div class="container">
 
 <header>
 
@@ -83,9 +114,13 @@
 
 </main>
 
+
+    </div>
+
 </div>
 
-<script src="assets/js/script.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/home.js"></script>
 
 </body>
 </html>

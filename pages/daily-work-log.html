@@ -34,8 +34,15 @@
 
         <div class="time-select">
 
-            <button class="time-btn">오전</button>
-            <button class="time-btn">오후</button>
+            <button type="button" id="amBtn" class="time-btn active-time"
+                 onclick="selectTime('오전')">
+                 오전
+             </button>
+
+             <button type="button" id="pmBtn" class="time-btn"
+                 onclick="selectTime('오후')">
+                 오후
+            </button>
 
         </div>
 
@@ -44,13 +51,90 @@
         <textarea
         placeholder="나한테 말하듯 편하게 적어줘."></textarea>
 
-        <button class="save-btn">Save</button>
+        
+<button class="save-btn" onclick="saveLog()">Save</button>
+
+<div class="log-list">
+
+    <div class="log-list-header">
+
+        <h2>Saved Logs</h2>
+
+        <div>
+
+            <button class="sort-btn"
+            onclick="renderLogs('new')">
+                최신순
+            </button>
+
+            <button class="sort-btn"
+            onclick="renderLogs('old')">
+                오래된순
+            </button>
+
+        </div>
+
+    </div>
+
+    <div id="logContainer">
 
     </div>
 
 </div>
+    </div>
 
-<script src="../assets/js/script.js"></script>
+</div>
+
+<script src="../assets/js/app.js"></script>
+<script src="../assets/js/daily-log.js"></script>
+
+
+<!-- Edit Modal -->
+
+<div id="editModal" class="modal">
+
+    <div class="modal-content">
+
+        <h2>Edit Daily Log</h2>
+
+        <label>날짜</label>
+        <input type="date" id="editDate">
+
+        <label>근무 시간</label>
+
+        <div class="time-select">
+
+            <button type="button" id="editAm" class="time-btn active-time"
+            onclick="selectEditTime('오전')">
+                오전
+            </button>
+
+            <button type="button" id="editPm" class="time-btn"
+            onclick="selectEditTime('오후')">
+                오후
+            </button>
+
+        </div>
+
+        <label>오늘 한 일</label>
+
+        <textarea id="editText" rows="6"></textarea>
+
+        <div class="modal-buttons">
+
+            <button class="cancel-btn" onclick="closeModal()">
+                Cancel
+            </button>
+
+            <button class="save-btn" onclick="saveEdit()">
+                Save
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
 
 </body>
 

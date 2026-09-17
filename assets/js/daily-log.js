@@ -55,6 +55,7 @@ function saveLog() {
 }
 
 // 목록 표시
+
 function renderLogs(order = "new") {
 
     const container = document.getElementById("logContainer");
@@ -75,29 +76,40 @@ function renderLogs(order = "new") {
 
         const realIndex = originalLogs.indexOf(log);
 
+        // 아직은 임시 요약
+        const summary = log.text.length > 28
+            ? log.text.substring(0,28) + "..."
+            : log.text;
+
         container.innerHTML += `
-        <div class="log-item">
+        <div class="log-item clickable"
+             onclick="openLogDetail(${realIndex})">
 
-            <div class="log-header">
+            <div class="log-top">
 
-                <h3>${log.date} · ${log.time}</h3>
+                <div class="log-date">
+                    📅 ${log.date}
+                </div>
 
-                <div class="log-actions">
-
-                    <button class="icon-btn" onclick="editLog(${realIndex})">✏️</button>
-
-                    <button class="icon-btn delete" onclick="deleteLog(${realIndex})">🗑️</button>
-
+                <div class="log-time">
+                    ${log.time}
                 </div>
 
             </div>
 
-            <p>${log.text}</p>
+            <div class="log-summary">
+                ${summary}
+            </div>
 
-            ${log.editedAt ? `<small class="edited-time">수정됨 · ${log.editedAt}</small>` : ""}
+            <div class="log-tags">
+
+                <span class="tag">#AI</span>
+
+            </div>
 
         </div>
         `;
+
     });
 
 }
@@ -155,6 +167,8 @@ function saveEdit(){
     closeModal();
 
     renderLogs("new");
+
+    openLogDetail(editingIndex);
 
 }
 
@@ -253,4 +267,79 @@ async function runCareerBrain(log){
 }
 
 // 페이지 열릴 때 저장된 로그 불러오기
+
+
+
+function openLogDetail(index){
+
+    const logs = JSON.parse(localStorage.getItem("hazelLogs")) || [];
+
+    const log = logs[index];
+
+    editingIndex = index;
+
+    document.getElementById("detailModal").style.display = "flex";
+
+    const days=["일","월","화","수","목","금","토"];
+
+    const d=new Date(log.date);
+
+    const weekday=days[d.getDay()];
+
+    document.getElementById("detailTitle").innerText =
+        `${log.date} (${weekday}) · ${log.time}`;
+
+    document.getElementById("detailSummary").innerText =
+        log.text.length > 40
+        ? log.text.substring(0,40) + "..."
+        : log.text;
+
+    document.getElementById("detailText").innerText = log.text;
+
+    const edited=document.getElementById("detailEdited");
+
+    if(log.editedAt){
+        edited.innerText=`수정됨 · ${log.editedAt}`;
+    }else{
+        edited.innerText="";
+    }
+
+    const tags=["#AI","#Career","#Work"];
+
+    ["detailTag1","detailTag2","detailTag3"].forEach((id,i)=>{
+
+        const el=document.getElementById(id);
+
+        if(tags[i]){
+            el.innerText=tags[i];
+            el.style.display="inline-block";
+        }else{
+            el.style.display="none";
+        }
+
+    });
+
+}
+
+function closeDetailModal(){
+
+    document.getElementById("detailModal").style.display = "none";
+
+}
+
+function editCurrentLog(){
+
+    closeDetailModal();
+
+    editLog(editingIndex);
+
+}
+
+function deleteCurrentLog(){
+
+    closeDetailModal();
+
+    deleteLog(editingIndex);
+
+}
 renderLogs();

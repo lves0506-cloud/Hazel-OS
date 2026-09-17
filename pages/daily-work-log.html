@@ -15,11 +15,43 @@
 
 <body>
 
-<div class="container">
+<div class="app">
 
-    <button class="back-btn" onclick="location.href='../index.html'">
-        ← Home
-    </button>
+    <aside class="sidebar">
+
+        <div class="logo">Hazel OS</div>
+
+        <nav>
+
+            <div class="nav-item"
+                onclick="location.href='../index.html'">
+                🏠 Home
+            </div>
+
+            <div class="nav-item"
+                onclick="location.href='career.html'">
+                💼 Career
+            </div>
+
+            <div class="nav-item active">
+                ✍️ Daily Work Log
+            </div>
+
+            <div class="nav-item"
+                onclick="alert('일상은 Build 006 예정 🌿')">
+                🌿 일상
+            </div>
+
+            <div class="nav-item"
+                onclick="location.href='settings.html'">
+                ⚙️ Settings
+            </div>
+
+        </nav>
+
+    </aside>
+
+    <div class="container">
 
     <h1>Daily Work Log</h1>
 
@@ -122,6 +154,7 @@
     </div>
 
 </div>
+</div>
 
 <script src="../assets/js/app.js"></script>
 <script src="../assets/js/daily-log.js"></script>
@@ -174,6 +207,69 @@
 
 </div>
 
+<!-- Detail Modal -->
+
+<div id="detailModal" class="modal">
+
+    <div class="modal-content">
+
+        <div class="detail-header">
+
+            <h2 id="detailTitle">Daily Log</h2>
+
+             <button class="close-btn"
+                 onclick="closeDetailModal()">
+                 ✕
+             </button>
+
+        </div>
+
+        <small id="detailEdited"></small>
+
+        <div class="log-tags">
+            <span id="detailTag1" class="tag">#AI</span>
+            <span id="detailTag2" class="tag"></span>
+            <span id="detailTag3" class="tag"></span>
+        </div>
+
+        <div class="brain-result">
+
+            <b>AI Summary</b>
+
+            <p id="detailSummary"></p>
+
+        </div>
+
+        <div>
+
+            <b>Original Log</b>
+
+            <p id="detailText"></p>
+
+        </div>
+
+        <div class="modal-buttons">
+
+            <button class="icon-btn"
+            onclick="editCurrentLog()">
+                ✏️ 수정
+            </button>
+
+            <button class="icon-btn delete"
+            onclick="deleteCurrentLog()">
+                🗑️ 삭제
+            </button>
+
+            <button class="cancel-btn"
+            onclick="closeDetailModal()">
+                닫기
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
 </body>
 
 </html>

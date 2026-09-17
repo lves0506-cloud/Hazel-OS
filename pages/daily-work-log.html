@@ -17,39 +17,7 @@
 
 <div class="app">
 
-    <aside class="sidebar">
-
-        <div class="logo">Hazel OS</div>
-
-        <nav>
-
-            <div class="nav-item"
-                onclick="location.href='../index.html'">
-                🏠 Home
-            </div>
-
-            <div class="nav-item"
-                onclick="location.href='career.html'">
-                💼 Career
-            </div>
-
-            <div class="nav-item active">
-                ✍️ Daily Work Log
-            </div>
-
-            <div class="nav-item"
-                onclick="alert('일상은 Build 006 예정 🌿')">
-                🌿 일상
-            </div>
-
-            <div class="nav-item"
-                onclick="location.href='settings.html'">
-                ⚙️ Settings
-            </div>
-
-        </nav>
-
-    </aside>
+    <div id="sidebarContainer"></div>
 
     <div class="container">
 
@@ -156,8 +124,13 @@
 </div>
 </div>
 
+<script src="../assets/components/sidebar.js"></script>
 <script src="../assets/js/app.js"></script>
 <script src="../assets/js/daily-log.js"></script>
+
+<script>
+renderSidebar("daily");
+</script>
 
 
 <!-- Edit Modal -->

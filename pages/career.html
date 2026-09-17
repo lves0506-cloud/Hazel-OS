@@ -16,35 +16,7 @@
 
 <div class="app">
 
-    <aside class="sidebar">
-
-        <div class="logo">
-            Hazel OS
-        </div>
-
-        <nav>
-
-            <div class="nav-item"
-            onclick="location.href='../index.html'">
-                🏠 Home
-            </div>
-
-            <div class="nav-item active">
-                💼 Career
-            </div>
-
-            <div class="nav-item"
-            onclick="alert('Build 006 예정 🌿')">
-                🌿 일상
-            </div>
-
-            <div class="nav-item" onclick="location.href='settings.html'">
-                ⚙️ Settings
-            </div>
-
-        </nav>
-
-    </aside>
+    <div id="sidebarContainer"></div>
 
     <div class="container">
 
@@ -99,7 +71,10 @@
 
 <script src="../assets/js/app.js"></script>
 <script src="../assets/js/career.js"></script>
-
+<script src="../assets/components/sidebar.js"></script>
+<script>
+renderSidebar("career");
+</script>
 </body>
 
 </html>

@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Daily Work Log</title>
+
+<link rel="stylesheet" href="../assets/css/style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <button class="back-btn" onclick="location.href='../index.html'">
+        ← Home
+    </button>
+
+    <h1>Daily Work Log</h1>
+
+    <p>오늘의 업무를 자유롭게 기록하세요.</p>
+
+    <div class="log-box">
+
+        <label>오늘 날짜</label>
+        <input type="date" id="date">
+
+        <label>근무 시간</label>
+
+        <div class="time-select">
+
+            <button class="time-btn">오전</button>
+            <button class="time-btn">오후</button>
+
+        </div>
+
+        <label>오늘 한 일</label>
+
+        <textarea
+        placeholder="나한테 말하듯 편하게 적어줘."></textarea>
+
+        <button class="save-btn">Save</button>
+
+    </div>
+
+</div>
+
+<script src="../assets/js/script.js"></script>
+
+</body>
+
+</html>

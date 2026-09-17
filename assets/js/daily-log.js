@@ -1,4 +1,3 @@
-
 let selectedTime = "오전";
 
 let editingIndex = null;
@@ -37,18 +36,22 @@ function saveLog() {
 
     const logs = JSON.parse(localStorage.getItem("hazelLogs")) || [];
 
-    logs.push({
+    const newLog = {
         date,
         time: selectedTime,
         text,
         editedAt: null
-    });
+    };
+
+    logs.push(newLog);
 
     localStorage.setItem("hazelLogs", JSON.stringify(logs));
 
     document.querySelector("textarea").value = "";
 
     renderLogs("new");
+
+    runCareerBrain(newLog);
 }
 
 // 목록 표시
@@ -100,19 +103,18 @@ function renderLogs(order = "new") {
 }
 
 // 수정
-
 function editLog(index){
 
-    const logs=JSON.parse(localStorage.getItem("hazelLogs"))||[];
+    const logs = JSON.parse(localStorage.getItem("hazelLogs")) || [];
 
-    editingIndex=index;
+    editingIndex = index;
 
-    document.getElementById("editModal").style.display="flex";
+    document.getElementById("editModal").style.display = "flex";
 
-    document.getElementById("editDate").value=logs[index].date;
-    document.getElementById("editText").value=logs[index].text;
+    document.getElementById("editDate").value = logs[index].date;
+    document.getElementById("editText").value = logs[index].text;
 
-    editSelectedTime=logs[index].time;
+    editSelectedTime = logs[index].time;
 
     selectEditTime(editSelectedTime);
 
@@ -120,35 +122,35 @@ function editLog(index){
 
 function selectEditTime(time){
 
-    editSelectedTime=time;
+    editSelectedTime = time;
 
-    document.getElementById("editAm").classList.toggle("active-time",time==="오전");
-    document.getElementById("editPm").classList.toggle("active-time",time==="오후");
+    document.getElementById("editAm").classList.toggle("active-time", time==="오전");
+    document.getElementById("editPm").classList.toggle("active-time", time==="오후");
 
 }
 
 function closeModal(){
 
-    document.getElementById("editModal").style.display="none";
+    document.getElementById("editModal").style.display = "none";
 
 }
 
 function saveEdit(){
 
-    const logs=JSON.parse(localStorage.getItem("hazelLogs"))||[];
+    const logs = JSON.parse(localStorage.getItem("hazelLogs")) || [];
 
-    logs[editingIndex].date=document.getElementById("editDate").value;
-    logs[editingIndex].time=editSelectedTime;
-    logs[editingIndex].text=document.getElementById("editText").value;
+    logs[editingIndex].date = document.getElementById("editDate").value;
+    logs[editingIndex].time = editSelectedTime;
+    logs[editingIndex].text = document.getElementById("editText").value;
 
-    logs[editingIndex].editedAt=new Date().toLocaleString("ko-KR",{
+    logs[editingIndex].editedAt = new Date().toLocaleString("ko-KR",{
         month:"2-digit",
         day:"2-digit",
         hour:"2-digit",
         minute:"2-digit"
     });
 
-    localStorage.setItem("hazelLogs",JSON.stringify(logs));
+    localStorage.setItem("hazelLogs", JSON.stringify(logs));
 
     closeModal();
 
@@ -173,5 +175,82 @@ function deleteLog(index) {
 
 }
 
-// 페이지 열릴 때 실행
+// ---------- Career Brain ----------
+
+// 임시 AI (나중에 OpenAI API로 교체될 자리)
+function fakeAI(text){
+
+    return{
+        summary:"오늘 업무 경험이 정리되었습니다.",
+        related:[
+            "업무 Wiki",
+            "Career DB",
+            "Interview Vault",
+            "취준방"
+        ]
+    };
+
+}
+
+async function runCareerBrain(log){
+
+    const status = document.getElementById("brainStatus");
+    const result = document.getElementById("brainResult");
+    const brain = document.getElementById("brainIcon");
+
+    if(!status || !result || !brain) return;
+
+    result.innerHTML = "";
+
+    ["step1","step2","step3","step4"].forEach(id=>{
+        document.getElementById(id).classList.remove("step-done");
+    });
+
+    status.innerHTML = "Analyzing your experience...";
+    brain.classList.add("pulse");
+
+    const wait = (ms)=>new Promise(r=>setTimeout(r,ms));
+
+    document.getElementById("step1").classList.add("step-done");
+    await wait(400);
+
+    document.getElementById("step2").classList.add("step-done");
+    await wait(400);
+
+    document.getElementById("step3").classList.add("step-done");
+    await wait(400);
+
+    document.getElementById("step4").classList.add("step-done");
+
+    status.innerHTML = "Connection complete.";
+
+    const analysis = fakeAI(log.text);
+
+    brain.classList.remove("pulse");
+
+    result.innerHTML = `
+        <div class="brain-finish">
+            ✨ Everything Connects.
+        </div>
+
+        <div class="brain-result">
+
+            <b>AI Summary</b><br><br>
+
+            ${analysis.summary}
+
+            <br><br>
+
+            <b>Connected Modules</b>
+
+            <ul>
+                ${analysis.related.map(item=>`<li>☑ ${item}</li>`).join("")}
+            </ul>
+
+        </div>
+    `;
+
+}
+
+// 페이지 열릴 때 저장된 로그 불러오기
 renderLogs();

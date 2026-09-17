@@ -325,3 +325,136 @@ cursor:pointer;
 .cancel-btn:hover{
 background:#D6DEE8;
 }
+
+
+/* Career Brain */
+
+.brain-card{
+
+background:white;
+padding:24px;
+border-radius:24px;
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+margin-top:30px;
+margin-bottom:30px;
+
+}
+
+.brain-header{
+
+font-size:22px;
+font-weight:bold;
+color:#1E3A5F;
+margin-bottom:12px;
+
+}
+
+.brain-steps{
+
+display:flex;
+flex-direction:column;
+gap:10px;
+margin-top:18px;
+
+}
+
+.brain-steps div{
+
+padding:10px;
+border-radius:12px;
+background:#F3F7FB;
+
+}
+
+.step-done{
+
+background:#E3F3E8 !important;
+color:#226B3A;
+
+}
+
+.brain-result{
+
+margin-top:20px;
+padding:18px;
+background:#E8F1FB;
+border-radius:18px;
+line-height:1.7;
+
+}
+
+
+/* =====================
+   Brain Pulse Animation
+===================== */
+
+.brain-header{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.brain-icon{
+font-size:28px;
+display:inline-block;
+}
+
+.pulse{
+animation:brainPulse .8s ease-in-out infinite;
+}
+
+@keyframes brainPulse{
+
+0%{
+transform:scale(1);
+filter:drop-shadow(0 0 0 rgba(44,90,160,.2));
+}
+
+50%{
+transform:scale(1.12);
+filter:drop-shadow(0 0 12px rgba(44,90,160,.7));
+}
+
+100%{
+transform:scale(1);
+filter:drop-shadow(0 0 0 rgba(44,90,160,.2));
+}
+
+}
+
+.step-done{
+
+background:#E3F3E8 !important;
+color:#226B3A;
+transform:translateX(8px);
+transition:.35s;
+
+}
+
+.brain-finish{
+
+margin-top:18px;
+padding:16px;
+background:linear-gradient(135deg,#E8F1FB,#D6E8FF);
+border-radius:16px;
+text-align:center;
+font-weight:bold;
+font-size:18px;
+color:#1E3A5F;
+animation:fadeUp .6s ease;
+
+}
+
+@keyframes fadeUp{
+
+from{
+opacity:0;
+transform:translateY(15px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}

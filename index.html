@@ -23,9 +23,106 @@
 
 <h1 id="greeting">Good Morning, Hazel.</h1>
 
-<p>One Entry · AI Organizes · Everything Connects</p>
+<!-- Home Dashboard -->
 
-<input type="text" placeholder="Search Hazel OS...">
+<div class="home-dashboard">
+
+    <!-- Search -->
+
+    <div class="dashboard-card">
+
+        <input
+            type="text"
+            class="search-box"
+            placeholder="Search Hazel OS..."
+        >
+
+    </div>
+
+    <!-- Recent -->
+
+    <div class="dashboard-card">
+
+        <div class="section-title">
+
+            🕘 최근 접속
+
+        </div>
+
+        <div class="recent-grid" id="recentGrid">
+
+            <div class="recent-item">
+
+                <div class="recent-icon">📖</div>
+
+                <small>취준방</small>
+
+            </div>
+
+            <div class="recent-item">
+
+                <div class="recent-icon">✍️</div>
+
+                <small>Daily Log</small>
+
+            </div>
+
+            <div class="recent-item">
+
+                <div class="recent-icon">📚</div>
+
+                <small>업무 Wiki</small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Favorites -->
+
+    <div class="dashboard-card">
+
+        <div class="section-title">
+
+            ⭐ 즐겨찾기
+
+        </div>
+
+        <div class="favorite-list" id="favoriteList">
+
+        </div>  
+
+    </div>
+
+    <!-- Continue -->
+
+    <div class="dashboard-card">
+
+        <div class="section-title">
+
+            ▶ Continue Working
+
+        </div>
+
+        <div class="continue-card"
+             id="continueCard">
+
+             <div id="continueTitle">
+                 아직 작업 없음
+            </div>
+
+             <small id="continueTime">
+                 최근 작업이 여기에 표시됩니다.
+             </small>
+
+        </div>
+
+    </div>
+
+</div>
+
+<p>One Entry · AI Organizes · Everything Connects</p>
 
 </header>
 
@@ -98,6 +195,7 @@
 
 <script>
 renderSidebar("home");
+renderRecent();
 </script>
 
 </body>

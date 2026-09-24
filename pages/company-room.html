@@ -17,6 +17,13 @@
 <div class="container">
 
 <h1 id="companyTitle">회사 취준방</h1>
+<button class="save-btn"
+id="pinBtn"
+onclick="toggleFavorite()">
+
+☆ Pin
+
+</button>
 
 <div class="company-card">
 
@@ -77,12 +84,20 @@ ChatGPT에서 준비하기
 </div>
 
 <script src="../assets/components/sidebar.js"></script>
+<script src="../assets/js/home.js"></script>
 <script src="../assets/js/company-room.js"></script>
 
 <script>
 renderSidebar("job");
 loadCompany();
-</script>
 
+const companies = JSON.parse(localStorage.getItem("hazelCompanies")) || [];
+const params = new URLSearchParams(window.location.search);
+const idx = Number(params.get("index"));
+
+if (companies[idx]) {
+    recordVisit(`${companies[idx].name} 취준방`, "🏢");
+}
+</script>
 </body>
 </html>

@@ -26,6 +26,7 @@ document.getElementById("companyTitle").innerText=`${company.name} 취준방`;
 document.getElementById("statusSelect").value=company.status;
 
 document.getElementById("companyMemo").value=company.memo||"";
+updatePinButton();
 
 }
 
@@ -76,5 +77,55 @@ const url=
 `https://chatgpt.com/?q=${encodeURIComponent(prompt)}`;
 
 window.open(url,"_blank");
+
+}
+
+function updatePinButton(){
+
+const btn=document.getElementById("pinBtn");
+
+if(!btn)return;
+
+const companies=getCompanies();
+const company=companies[companyIndex];
+
+let favorites=JSON.parse(localStorage.getItem("hazelFavorites"))||[];
+
+const exists=favorites.some(item=>item.name===`${company.name} 취준방`);
+
+btn.innerText=exists ? "★ Pinned" : "☆ Pin";
+
+}
+
+function toggleFavorite(){
+
+const companies=getCompanies();
+const company=companies[companyIndex];
+
+let favorites=JSON.parse(localStorage.getItem("hazelFavorites"))||[];
+
+const name=`${company.name} 취준방`;
+
+const exists=favorites.some(item=>item.name===name);
+
+if(exists){
+
+favorites=favorites.filter(item=>item.name!==name);
+
+}else{
+
+favorites.unshift({
+name,
+icon:"📌",
+url:`pages/company-room.html?index=${companyIndex}`
+});
+
+favorites=favorites.slice(0,5);
+
+}
+
+localStorage.setItem("hazelFavorites",JSON.stringify(favorites));
+
+updatePinButton();
 
 }

@@ -35,6 +35,13 @@ onclick="location.href='${pageLink("daily-work-log.html")}'">
 
 </div>
 
+<div class="nav-item ${activePage==="job"?"active":""}"
+onclick="location.href='${pageLink("job-room.html")}'">
+
+📖 취준방
+
+</div>
+
 <div class="nav-item"
 onclick="alert('일상은 Build 006 예정 🌿')">
 

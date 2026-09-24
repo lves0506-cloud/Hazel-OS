@@ -654,3 +654,34 @@ padding-bottom:18px;
 transform:rotate(180deg);
 
 }
+
+.company-card{
+
+background:white;
+border-radius:22px;
+padding:22px;
+margin-top:18px;
+box-shadow:0 10px 30px rgba(44,90,160,.12);
+cursor:pointer;
+transition:.25s;
+
+}
+
+.company-card:hover{
+
+transform:translateY(-4px);
+
+}
+
+.company-card h3{
+
+margin:0 0 8px;
+
+}
+
+.company-card p{
+
+color:#5B6B7C;
+margin:0;
+
+}

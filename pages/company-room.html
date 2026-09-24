@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>취준방 | Hazel OS</title>
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+<div id="sidebarContainer"></div>
+
+<div class="container">
+
+<h1 id="companyTitle">회사 취준방</h1>
+
+<div class="company-card">
+
+<label>진행 상태</label>
+
+<select id="statusSelect" onchange="saveStatus()">
+<option>직무 분석 완료</option>
+<option>지원서 작성중</option>
+<option>지원서 제출 완료 & 결과 대기중</option>
+<option>서류 결과 발표</option>
+<option>면접 준비 중</option>
+<option>면접 완료 & 결과 대기중</option>
+<option>최종합격</option>
+</select>
+
+</div>
+
+<div class="company-card">
+
+<h2>📝 메모</h2>
+
+<textarea id="companyMemo"
+placeholder="이 회사만의 메모를 적어보자."
+rows="6"></textarea>
+
+<button class="save-btn"
+onclick="saveMemo()">
+
+Save Memo
+
+</button>
+
+</div>
+
+<div class="company-card">
+
+<h2>🔗 관련 경험</h2>
+
+<p>Build 010에서 Daily Work Log와 자동 연결됩니다.</p>
+
+</div>
+
+<div class="company-card">
+
+<h2>💬 ChatGPT</h2>
+
+<button class="save-btn"
+onclick="openChatGPT()">
+
+ChatGPT에서 준비하기
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<script src="../assets/components/sidebar.js"></script>
+<script src="../assets/js/company-room.js"></script>
+
+<script>
+renderSidebar("job");
+loadCompany();
+</script>
+
+</body>
+</html>

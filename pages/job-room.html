@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>취준방 | Hazel OS</title>
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+<div id="sidebarContainer"></div>
+
+<div class="container">
+
+<h1>📖 취준방</h1>
+
+<p>회사별 준비 공간을 만들어보자.</p>
+
+<button class="save-btn" onclick="addCompany()">
++ New Company
+</button>
+
+<div id="companyList"></div>
+
+</div>
+
+</div>
+
+<script src="../assets/components/sidebar.js"></script>
+<script src="../assets/js/job-room.js"></script>
+
+<script>
+renderSidebar("job");
+renderCompanies();
+</script>
+
+</body>
+</html>

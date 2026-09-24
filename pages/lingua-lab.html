@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lingua Lab | Hazel OS</title>
+
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+<div id="sidebarContainer"></div>
+
+<div class="container">
+
+<h1>🌍 Lingua Lab</h1>
+<p>3줄 일기 하나로 영어·일본어를 함께 연습해보자.</p>
+
+<div class="dashboard-card">
+
+<label>오늘의 3줄 일기</label>
+
+<textarea
+id="koreanDiary"
+rows="6"
+placeholder="예: 오늘 Shipping Validation 자료를 검토하고 PQ 회의를 했다."></textarea>
+
+<button class="save-btn" onclick="openTranslatePrompt()">
+🧠 Translate with ChatGPT
+</button>
+
+</div>
+
+<div class="dashboard-card">
+
+<div class="language-tabs">
+
+<button id="enTab" class="tab-btn active-tab" onclick="switchTab('en')">
+🇺🇸 English
+</button>
+
+<button id="jpTab" class="tab-btn" onclick="switchTab('jp')">
+🇯🇵 日本語
+</button>
+
+<button id="wordTab" class="tab-btn" onclick="switchTab('word')">
+🔒 Word Vault
+</button>
+
+</div>
+
+<div id="englishPanel" class="language-panel active-panel">
+
+<textarea
+id="englishResult"
+class="translation-box"
+rows="8"
+placeholder="영어 번역을 붙여넣어."></textarea>
+
+</div>
+
+<div id="japanesePanel" class="language-panel">
+
+<textarea
+id="japaneseResult"
+class="translation-box"
+rows="8"
+placeholder="일본어 번역을 붙여넣어."></textarea>
+
+</div>
+
+<div id="wordPanel" class="language-panel">
+
+<textarea
+id="wordVaultResult"
+class="translation-box"
+rows="8"
+placeholder="한국어 - English - 日本語 형식으로 붙여넣어."></textarea>
+
+<div id="wordVaultPreview"></div>
+
+</div>
+
+<button id="archiveBtn"
+class="save-btn archive-btn"
+onclick="saveLinguaDiary()">
+🔒 Archive Entry
+</button>
+
+</div>
+
+<div class="dashboard-card">
+
+<h3>📚 Saved Diaries</h3>
+
+<div id="linguaHistory"></div>
+
+</div>
+
+</div>
+
+</div>
+
+<div id="toast" class="toast">복사됨 ✓</div>
+
+<script src="../assets/components/sidebar.js"></script>
+<script src="../assets/js/home.js"></script>
+<script src="../assets/js/lingua-lab.js"></script>
+
+<script>
+renderSidebar("lingua");
+recordVisit("Lingua Lab","🌍");
+</script>
+
+</body>
+</html>

@@ -42,6 +42,13 @@ onclick="location.href='${pageLink("job-room.html")}'">
 
 </div>
 
+<div class="nav-item ${activePage==="lingua"?"active":""}"
+onclick="location.href='${pageLink("lingua-lab.html")}'">
+
+🌍 Lingua Lab
+
+</div>
+
 <div class="nav-item"
 onclick="alert('일상은 Build 006 예정 🌿')">
 
